@@ -1,0 +1,8 @@
+datasets
+transformers
+torch
+evaluate
+jiwer
+tensorboard
+soundfile   
+torchaudio==0.10
