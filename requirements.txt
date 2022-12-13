@@ -1,5 +1,5 @@
 datasets
-transformers
+git+https://github.com/huggingface/transformers
 torch
 evaluate
 jiwer
