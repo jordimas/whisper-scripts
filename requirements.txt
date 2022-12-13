@@ -1,6 +1,6 @@
 datasets
 git+https://github.com/huggingface/transformers
-torch
+torch==1.10.0
 evaluate
 jiwer
 tensorboard
