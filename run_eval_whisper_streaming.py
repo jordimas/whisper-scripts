@@ -136,7 +136,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--streaming",
         type=bool,
-        default=False,
+        default=True,
         help="Choose whether you'd like to download the entire dataset or stream it during the evaluation.",
     )
     parser.add_argument(
