@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a arr=("openai/whisper-medium" "softcatala/whisper-medium-ca" "openai/whisper-small" "softcatala/whisper-small-ca")
+declare -a arr=("openai/whisper-medium" "softcatala/whisper-medium-ca" "openai/whisper-small" "softcatala/whisper-small-ca" "openai/whisper-base" "softcatala/whisper-base-ca")
 
 for model in "${arr[@]}"; do
     echo Processing $model
