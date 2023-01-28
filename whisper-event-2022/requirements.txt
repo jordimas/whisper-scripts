@@ -1,8 +1,10 @@
-datasets
-git+https://github.com/huggingface/transformers
-torch==1.10.0
-evaluate
+numpy==1.21.3
+torch==1.13.0
+torchaudio==0.13
+transformers==4.26.0
+datasets==2.9.0
+librosa
 jiwer
-tensorboard
-soundfile   
-torchaudio==0.10
+evaluate>=0.3.0
+more-itertools
+tensorboard 

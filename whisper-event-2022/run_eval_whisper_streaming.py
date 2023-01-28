@@ -63,7 +63,7 @@ def main(args):
         args.config,
         split=args.split,
         streaming=args.streaming,
-        use_auth_token=True,
+        use_auth_token=False,
     )
 
     # Only uncomment for debugging
@@ -77,15 +77,24 @@ def main(args):
     references = []
 
     # run streamed inference
-    for out in whisper_asr(data(dataset), batch_size=batch_size):
-        predictions.append(whisper_norm(out["text"]))
-        references.append(out["reference"][0])
+    idx = args.model_id.index("/")
+    _model = args.model_id[idx + 1:]
+    organisation = args.model_id[:idx]
+    with open(f"{organisation}-{_model}-predictions.txt", "w") as f:
+        for out in whisper_asr(data(dataset), batch_size=batch_size):
+            prediction = whisper_norm(out["text"])
+            predictions.append(prediction)
+            references.append(out["reference"][0])
+
+            f.write(prediction + "\n")
 
     wer = wer_metric.compute(references=references, predictions=predictions)
     wer = round(100 * wer, 2)
 
-    print("WER:", wer)
-
+    with open(f"{organisation}-{_model}-predictions.wer", "w") as f:
+        f.write(f"Model ID { args.model_id}\n")
+        f.write(f"Dataset: {args.dataset}\n")
+        f.write(f"WER: {wer}\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
