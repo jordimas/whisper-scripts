@@ -77,10 +77,14 @@ def main(args):
     references = []
 
     # run streamed inference
+    idx = args.dataset.index("/")
+    dataset_name = args.dataset[idx + 1:]
+
     idx = args.model_id.index("/")
     _model = args.model_id[idx + 1:]
     organisation = args.model_id[:idx]
-    with open(f"{organisation}-{_model}-predictions.txt", "w") as f:
+
+    with open(f"{organisation}-{_model}-{dataset_name}-predictions.txt", "w") as f:
         for out in whisper_asr(data(dataset), batch_size=batch_size):
             prediction = whisper_norm(out["text"])
             predictions.append(prediction)
@@ -91,7 +95,7 @@ def main(args):
     wer = wer_metric.compute(references=references, predictions=predictions)
     wer = round(100 * wer, 2)
 
-    with open(f"{organisation}-{_model}-predictions.wer", "w") as f:
+    with open(f"{organisation}-{_model}-{dataset_name}-predictions.wer", "w") as f:
         f.write(f"Model ID { args.model_id}\n")
         f.write(f"Dataset: {args.dataset}\n")
         f.write(f"WER: {wer}\n")
