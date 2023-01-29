@@ -1,0 +1,3 @@
+Model ID openai/whisper-base
+Dataset: projecte-aina/parlament_parla
+WER: 119.62

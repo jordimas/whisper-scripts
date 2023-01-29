@@ -1,0 +1,3 @@
+Model ID openai/whisper-small
+Dataset: mozilla-foundation/common_voice_11_0
+WER: 40.42

@@ -1,0 +1,3 @@
+Model ID openai/whisper-base
+Dataset: google/fleurs
+WER: 43.19
